@@ -38,9 +38,9 @@ function handleUserInputKeyDown(e) {
         [e.target.name] : e.target.value
     }
     if(e.keyCode === 13) {
-        const passwordInput = document.querySelector(".password-input");
-        const usernameInput = document.querySelector(".username-input");
         const nameInput = document.querySelector(".name-input");
+        const usernameInput = document.querySelector(".username-input");
+        const passwordInput = document.querySelector(".password-input");
         if(e.target.name === "name") {
             usernameInput.focus();
         }
@@ -51,16 +51,14 @@ function handleUserInputKeyDown(e) {
             userList = [...userList, { ...user, id : getNewId()}]; 
             // 유저의 값만 옮겨서 새로운 유저를 추가
             
-            renderTable();
             saveUserList();
+            renderTable();
             nameInput.value = emptyUser.name;
             usernameInput.value = emptyUser.username;
             passwordInput.value = emptyUser.password;
             nameInput.focus();
-            usernameInput.focus();
         }
     }
-    console.log(e.target.name);
 }
 function saveUserList() {
     localStorage.setItem("userList", JSON.stringify(userList));
